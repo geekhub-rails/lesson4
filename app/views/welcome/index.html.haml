@@ -1,0 +1,28 @@
+%h2 New Task
+= form_for @task, remote: true do |f|
+  = f.label :title
+  %br/
+  = f.text_field :title
+  %br/
+  = f.label :description
+  %br/
+  = f.text_field :description
+  %br/
+  = f.label :status
+  %br/
+  = f.select :status, ["neww", "done"]
+  %br/
+  = f.label :expire_at
+  %br/
+  = f.datetime_field :expire_at
+  = f.button :OK
+
+%h2 Tasks
+= form_tag tasks_path, method: :get do |f|
+  = text_field_tag :q, params[:q]
+  = submit_tag :Search
+%ul
+  - @tasks.each do |b|
+    %li
+      = b.title
+      = button_tag 'X', 'data-url' => task_path(b), 'data-remote' => true, 'data-method' => :delete

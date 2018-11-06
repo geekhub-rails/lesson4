@@ -1,24 +1,10 @@
-# README
+- Search without page reload (remote form, respond with JS)
+- Add description and expire at fields to view
+- [x] Add validations (description is more than 5 chars, expire at is later than now)
+- Display error messages to user is validations fail
+- [x] Status should be enum (new, done) default new
+- Add checkbox that marks task as done (tasks#update)
+- Apply fancy styling
+- [x] Add http basic auth (login with login and password)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+= No page reloads
