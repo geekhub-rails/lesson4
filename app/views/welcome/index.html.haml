@@ -1,5 +1,9 @@
 %h2 New Task
 = form_for @task, remote: true do |f|
+  - flash.each do |key, value|
+    %div{:class => "flash_class"}
+      = value
+  %br
   = f.label :title
   %br/
   = f.text_field :title
@@ -17,12 +21,19 @@
   = f.datetime_field :expire_at
   = f.button :OK
 
+%br
 %h2 Tasks
+%br
+(move cursor on title if you want to see a description)
+
 = form_tag tasks_path, method: :get do |f|
   = text_field_tag :q, params[:q]
   = submit_tag :Search
 %ul
   - @tasks.each do |b|
     %li
-      = b.title
-      = button_tag 'X', 'data-url' => task_path(b), 'data-remote' => true, 'data-method' => :delete
+      %a{:title => "#{b.description}"} #{b.title}
+      = check_box_tag :status, {}
+      %br
+      Expire at: #{b.expire_at}
+      = button_tag 'X', 'data-url' => task_path(b), 'data-remote' => true, 'data-method' => :delete, 'class' => "button_xxx"

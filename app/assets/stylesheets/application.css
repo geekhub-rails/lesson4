@@ -13,3 +13,65 @@
  *= require_tree .
  *= require_self
  */
+body {
+	margin: 30px;
+	font-size: 17px;
+}
+
+h2 {
+	display: inline;
+	text-decoration: underline;
+}
+
+label {
+	font-weight: bold;
+}
+
+select {
+	background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+  height: 25px;
+  width: 100px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+.flash_class {
+	margin: 10px 0px;
+	padding:1px;
+	color: red;
+	background-color: #FFD2D2;
+}
+
+input[type=text], input[type=datetime-local] {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+input[type=button], input[type=submit] {
+  padding: 2px;
+  background: #2196F3;
+  color: white;
+  font-size: 14px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+	cursor: pointer;
+}
+
+button[type=submit] {
+	cursor: pointer;
+	padding: 2px;
+	font-size: 13px;
+}
+
+.button_xxx {
+	background-color: red;
+	color: black;
+	border: 1px solid grey;
+  border-left: none;
+}
