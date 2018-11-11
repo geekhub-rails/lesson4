@@ -1,13 +1,14 @@
 class TasksController < ApplicationController
   def index
     @task = Task.new
-    @tasks = Task.where("title LIKE '%#{params[:search_query]}%'")
+    @tasks = Task.where("title LIKE '%#{params[:search_query]}%'").order(id: :desc)
     render 'welcome/index'
   end
 
   def create
+    @tasks = Task.where("title LIKE '%#{params[:search_query]}%'").order(id: :desc)
     @task = Task.create(task_params)
-    redirect_to :root
+    render 'welcome/index'
   end
 
   def destroy

@@ -11,6 +11,7 @@
   <br/>
   <%= f.button :OK %>
 <% end %>
+<div id="errors"></div>
 
 <h2>Tasks</h2>
 <%= form_tag tasks_path, remote: true, method: :get do |f| %>
