@@ -1,0 +1,8 @@
+<ul>
+  <% @tasks.each do |b| %>
+    <li>
+      <%= b.title %>
+      <%= button_tag 'X', 'data-url' => task_path(b), 'data-remote' => true, 'data-method' => :delete %>
+    </li>
+  <% end %>
+</ul>

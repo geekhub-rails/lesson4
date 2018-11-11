@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def index
     @task = Task.new
-    @tasks = Task.where("title LIKE '%#{params[:q]}%'")
+    @tasks = Task.where("title LIKE '%#{params[:search_query]}%'")
     render 'welcome/index'
   end
 

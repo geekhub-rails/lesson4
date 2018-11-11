@@ -1,0 +1,5 @@
+console.log(<%= @tasks.size %>)
+
+document.getElementById('tasks-list').innerHTML =
+    "<%= escape_javascript(render partial: 'tasks-list', :locals => { x_coord: @x, y_coord: @y }) %>"
+
