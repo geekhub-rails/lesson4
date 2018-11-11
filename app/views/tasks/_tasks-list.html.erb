@@ -14,8 +14,7 @@
       <td><%= task.description %></td>
       <td><%= task.expire_at %></td>
       <td>
-        <% task.status %>
-        <%#= button_tag task.status ? 'Done' : 'Active', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :patch %>
+        <%= button_tag task.status == 'done' ? 'Done' : 'Active', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :patch %>
       </td>
       <td><%= button_tag 'X', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :delete %></td>
     </tr>

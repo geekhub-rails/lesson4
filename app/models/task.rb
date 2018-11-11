@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   validates :title, presence: true
 
+  enum status: [:active, :done]
+
   validates :description,
             presence: true,
             length: {minimum: 5}
