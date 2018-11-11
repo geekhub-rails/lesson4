@@ -1,8 +1,24 @@
-<ul>
-  <% @tasks.each do |b| %>
-    <li>
-      <%= b.title %>
-      <%= button_tag 'X', 'data-url' => task_path(b), 'data-remote' => true, 'data-method' => :delete %>
-    </li>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Expire At</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.description %></td>
+      <td><%= task.expire_at %></td>
+      <td>
+        <% task.status %>
+        <%#= button_tag task.status ? 'Done' : 'Active', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :patch %>
+      </td>
+      <td><%= button_tag 'X', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :delete %></td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
