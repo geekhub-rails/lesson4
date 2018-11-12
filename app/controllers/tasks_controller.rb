@@ -1,39 +1,39 @@
 class TasksController < ApplicationController
+  before_action :require_user
+
   def index
     @task = Task.new
-    @tasks = Task.where("title LIKE '%#{params[:q]}%'")
-    render 'welcome/index'
-    #redirect_to :root
+    @tasks = current_user.tasks.q(params[:q])
   end
 
-def create
-  @task = Task.create(task_params)
-  flash[:notice] = @task.errors.full_messages.to_sentence unless @task.valid?
-  redirect_to :root
-  #render 'welcome/index'
-end
-
-def destroy
-  Task.delete(params[:id])
-  redirect_to :root
-end
-
-def edit
-  @task = Task.find(params[:id])
-end
-
-def update
-  @task = Task.find(params[:id])
-  if @task.update(task_params)
+  def create
+    @task = current_user.tasks.create(task_params)
+    return if @task.invalid?
+    @task.save
     redirect_to :root
-  else
-    #
   end
+
+  def update
+    task.update(update_task_params)
+    head 200
+  end
+
+  def destroy
+    Task.delete(params[:id])
+    redirect_to :root
 end
 
 private
 
+def task
+  @task ||= current_user.tasks.find(params[:id])
+end
+
+def update_task_params
+  params.require(:task).permit(:status)
+end
+
 def task_params
-  params.require(:task).permit(:title, :description, :status, :expire_at)
+  params.require(:task).permit(:title, :description, :expire_at, :status)
 end
 end

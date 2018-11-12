@@ -1,0 +1,25 @@
+<%= form_for @task, remote: true do |f| %>
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+    </div>
+    <%= f.text_field :title, value: @task.title, class: 'form-control', 'aria-label' => 'Small', 'aria-describedby' => 'inputGroup-sizing-sm'%>
+    <%= @task.errors[:title].first %>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <%= f.text_area :description, value: @task.description, id: 'exampleFormControlTextarea1', class: 'form-control', rows: 3 %>
+    <%= @task.errors[:description].first %>
+  </div>
+  <%= f.date_field :expire_at, value: @task.expire_at %>
+    <%= @task.errors[:expire_at].first %>
+  <%= f.button :OK %>
+<% end %>
+
+<% if notice %>
+  <div class="error-container alert alert-danger" role="alert">
+    <% notice.each do |error_message| %>
+      <p><%= "Field #{error_message.first} #{error_message[1].first}" %></p>
+    <% end %>
+  </div>
+<% end %>

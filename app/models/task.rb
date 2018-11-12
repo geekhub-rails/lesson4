@@ -1,13 +1,11 @@
 class Task < ApplicationRecord
-  validates :title, presence: true
-  validates :description, presence: true, length: { minimum: 2 }
-  validate :expiration_date
-  
-  enum status: [:neww, :done]
+  belongs_to :user
 
-  def expiration_date
-    if expire_at.present? && expire_at.past?
-      errors.add(:expire_at, "can't be in the past")
-    end
-  end  
+  validates :title, presence: true
+  validates :description, presence: true
+  validates_length_of :description, minimum: 5
+  validates :expire_at, inclusion: { in: (Date.today..Date.today+5.years) }
+  enum status: %i(todo done)
+
+  scope :q, ->(q) { where("title LIKE '%#{q}%'") if q }
 end

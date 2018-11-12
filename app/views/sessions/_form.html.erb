@@ -1,0 +1,11 @@
+<%= form_for @user, url: session_path, remote: true, method: :post do |f| %>
+  <div>
+    <%= f.text_field :name %>
+    <%= @user.errors[:name].first %>
+  </div>
+  <div>
+    <%= f.password_field :password %>
+    <%= @user.errors[:password].first %>
+  </div>
+  <div><%= f.submit 'Sign Up', class: 'btn btn-primary' %></div>
+<% end %>
