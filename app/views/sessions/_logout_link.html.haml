@@ -1,0 +1,2 @@
+- unless @current_user.nil?
+	= link_to "Log out", {controller: 'sessions', action: 'destroy'}, class: 'logout_button'
