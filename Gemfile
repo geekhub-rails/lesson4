@@ -36,6 +36,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 gem 'haml'
 gem 'rubocop'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

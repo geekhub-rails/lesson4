@@ -11,10 +11,11 @@
     <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'search' %>
   <% end %>
 
-
   <ul class="tasks-list">
     <%= render partial: 'task', collection: @tasks %>
   </ul>
+
+	
+	<%= will_paginate @tasks %>
+	<%-# js_will_paginate -%>
 </section>
-
-
