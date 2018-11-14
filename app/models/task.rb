@@ -7,5 +7,7 @@ class Task < ApplicationRecord
   validates :expire_at, inclusion: { in: (Date.today..Date.today+5.years) }
   enum status: %i(todo done)
 
-  scope :q, ->(q) { where("title LIKE '%#{q}%'") if q }
+#AND ("status LIKE '%todo%'")
+  scope :q, ->(q) { where("title LIKE '%#{q}%'") if q}
+
 end

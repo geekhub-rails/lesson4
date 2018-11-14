@@ -1,4 +1,10 @@
 class SessionsController < ApplicationController
+  #before_action :only_guests
+
+  #def only_guests
+   # redirect_to :root unless current_user.nil?
+  #end
+
   def new
     @user = User.new
   end
@@ -13,13 +19,12 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    session.delete(:user_id)
+    #session[:user_id] = nil
     redirect_to new_session_path
   end
 
-  def show
-    redirect_to new_session_path
-  end
+ 
 
   private
   def user_params
