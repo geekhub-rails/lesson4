@@ -1,6 +1,6 @@
 - [x] Log out (session#destroy)
 - Search Filters (status: select, expired | not expired),
 - [x] Pagination 10 per
-- Add bootstrap header with links to logout
+- [x] Add bootstrap header with links to logout
 - [x] Allow only guests to new session page
-- Remove new task form from index page and create new.js.rb with bootsrap popup with form
+- [x] Remove new task form from index page and create new.js.rb with bootsrap popup with form

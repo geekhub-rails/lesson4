@@ -1,7 +1,5 @@
 <section class="creat-task-section">
-  <h1>New Task</h1>
-
-  <%= render 'form' %>
+  <%= render 'modal' %>
 </section>
 
 <section class="tasks-container">
@@ -14,7 +12,6 @@
   <ul class="tasks-list">
     <%= render partial: 'task', collection: @tasks %>
   </ul>
-
 	
 	<%= will_paginate @tasks %>
 	<%-# js_will_paginate -%>
