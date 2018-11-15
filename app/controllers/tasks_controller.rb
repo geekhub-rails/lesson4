@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks = current_user.tasks.q(params[:q])
+    @tasks = current_user.tasks.search(params[:q]).get_page(params[:page].to_i)
   end
 
   def create
