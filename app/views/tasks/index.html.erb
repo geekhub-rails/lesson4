@@ -1,4 +1,5 @@
 <section class="creat-task-section">
+  <%= link_to "Log out", logout_path, method: "delete" %>
   <h1>New Task</h1>
 
   <%= render 'form' %>
@@ -16,5 +17,3 @@
     <%= render partial: 'task', collection: @tasks %>
   </ul>
 </section>
-
-

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post 'users/login', to: 'users#create'
   get 'users/registration', to: 'users#registration'
   get 'index', to: 'welcome#index'
+  delete '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
   root 'tasks#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resource :session
