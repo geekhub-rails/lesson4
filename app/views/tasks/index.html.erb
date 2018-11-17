@@ -2,7 +2,20 @@
     <h2>Tasks</h2>
 
     <%= form_tag tasks_path, method: :get, remote: true do |f| %>
-        <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'search form-control' %>
+        <%= text_field_tag :search, params[:search], placeholder: 'Search', class: 'search form-control' %>
+        <div class="form-group">
+            <%= label 'done_only', 'Done only' %>
+            <%= check_box_tag 'done_only', false, false, {data: {remote: true}} %>
+        </div>
+        <div class="field">
+            <%= label :expire_at, "All" %>
+            <%= radio_button_tag 'date_filter', 'all', true, {data: {remote: true}} %>
+
+            <%= label :expire_at, "Future" %>
+            <%= radio_button_tag 'date_filter', 'future', false, {data: {remote: true}} %>
+            <%= label :expire_at, "Expired" %>
+            <%= radio_button_tag 'date_filter', 'expired', false, {data: {remote: true}} %>
+        </div>
     <% end %>
 
     <div class="tasks-list-container">

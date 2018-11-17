@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">ToDO List</a>
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand" href="#">ToDo List</a>
     <div class="navbar-nav mr-auto">
         <a class="nav-link" href="/">Home</a>
         <%= link_to_if(@current_user, 'Add release', new_task_path,  {:remote => true, 'data-toggle' =>  "modal", class: 'nav-link', 'data-target' => '#modal-window'}){}  %>
