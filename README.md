@@ -1,5 +1,5 @@
 - [x] Log out (session#destroy)
-- Search Filters (status: select, expired | not expired),
+- [x] Search Filters (status: select, expired | not expired),
 - [x] Pagination 10 per
 - [x] Add bootstrap header with links to logout
 - [x] Allow only guests to new session page
