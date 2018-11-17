@@ -6,6 +6,10 @@ class TasksController < ApplicationController
     @tasks = current_user.tasks.search(params[:q]).get_page(params[:page].to_i)
   end
 
+  def new
+    @task = Task.new
+  end
+
   def create
     @task = current_user.tasks.create(task_params)
     return if @task.invalid?
