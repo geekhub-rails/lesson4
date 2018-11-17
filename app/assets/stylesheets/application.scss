@@ -25,6 +25,22 @@
 	text-decoration: none;
 }
 
+.task_expire_at {
+	position: absolute; right: 90px; top: 17px;
+}
+
+.custom-select {
+	width: 30%;
+}
+
 .search {
-	
+	text-align: center;
+	font-size: 23px;
+	margin-bottom: 7px;
+	width: 91%
+}
+
+#search_button {
+	align-self: safe center;
+	margin: 10px;
 }

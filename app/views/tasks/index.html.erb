@@ -7,10 +7,13 @@
 
   <%= form_tag tasks_path, method: :get, remote: true do |f| %>
     <%= text_field_tag :q, params[:q], placeholder: 'Type title', class: 'search' %>
-    <%= select_tag :s, options_for_select([ "", "1", "0" ], params[:s])%>
-    <%= date_field_tag :d, params[:d] %>
-    <%= select_tag :f, options_for_select([ "all dates", "expired", "not expired"], params[:f] || "all dates"), class: "search_sel"%>
-    <%= submit_tag "Search", class: "btn btn-info btn-sm", id: "search_btn" %>
+    <%= select_tag :s, options_for_select([ "", "1", "0" ], params[:s]), placeholder: 'fvf', class: 'browser-default custom-select'%>
+    <%= date_field_tag :d, params[:d], class: 'browser-default custom-select' %>
+    <%= select_tag :f, options_for_select([ "all dates", "expired", "not expired"], params[:f] || "all dates"), class: "browser-default custom-select"%>
+    <br>
+    <center>
+      <%= submit_tag "Search", class: "btn btn-info btn-lg", id: "search_button" %>
+    </center>
   <% end %>
 
   <ul class="tasks-list">
