@@ -9,6 +9,9 @@ class TasksController < ApplicationController
                .expired(params[:date_filter])
                .future(params[:date_filter])
                .get_page(params[:page].to_i)
+
+    @date_filters = ['all', 'future', 'expired']
+    @date_filter = params[:date_filter] || 'all'
   end
 
   def new

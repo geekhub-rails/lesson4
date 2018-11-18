@@ -1,3 +1,2 @@
-document.querySelector('ul.tasks-list').innerHTML = "<%= j(render @tasks) %>"
-
+document.querySelector('.tasks-list').innerHTML = "<%= j(render @tasks) %>"
 document.querySelector('.tasks-pagination').innerHTML = "<%= j(paginate(@tasks, remote: true)) %>"

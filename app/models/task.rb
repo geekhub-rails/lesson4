@@ -13,6 +13,6 @@ class Task < ApplicationRecord
 
   scope :get_page, ->(cur_page, size = DEFAULT_PAGE_SIZE) { page(cur_page).per(size) if cur_page }
   scope :done, ->(done_only) { where(status: 'done') if done_only }
-  scope :expired, ->(date_filter) { where("expire_at <= ?", Date.today) if date_filter == 'expited' }
-  scope :future, ->(date_filter) { where("expire_at => ?", Date.today) if  date_filter == 'future' }
+  scope :expired, ->(date_filter) { where("expire_at <= ?", Date.today) if date_filter == 'expired' }
+  scope :future, ->(date_filter) { where("expire_at > ?", Date.today) if  date_filter == 'future' }
 end
