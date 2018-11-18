@@ -1,21 +1,19 @@
 <nav class="navbar navbar-expand-sm bg-dark justify-content-end">
+
   <form class="form-inline">
     <%= form_tag tasks_path, method: :get, remote: true do |f| %>
       <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'form-control mr-sm-2' %>
     <% end %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Create new task
+      </button>
+        <%= link_to "Log out", logout_path, method: "delete", class: 'btn btn-outline-danger' %>
   </form>
-  <ul class="nav">
-    <li class="nav-item">
-      <%= link_to "Log out", logout_path, method: "delete", class: 'btn btn-outline-danger' %>
-    </li>
-  </ul>
+
 
 </nav>
 
 <section class="creat-task-section">
-
-  <h1>New Task</h1>
-
   <%= render 'form' %>
 </section>
 
