@@ -19,65 +19,134 @@
   --righteous-font: 'Righteous', cursive;
 }
 
-body {
-  /*background-color: #536691;*/
+html {
   background-image: url("http://pctechtips.org/apps/todo/img/Chicago-Wallpaper-3.jpg");
-  min-height: 100vh;
-  z-index: -10;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  background-color: rgba(31, 34, 118, 0.5);
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 100px 0;
+  width: 100%;
+  z-index: -10;
+  overflow-x: hidden;
   color: white;
   font-size: 1.3rem;
 }
 .hero {
-  position: absolute;
-  min-height: 100vh;
-  min-width: 100vw;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(31, 34, 118, 0.5);
-}
+  //background-color: rgba(31, 34, 118, 0.5);
+  .container {
+    text-align: center;
+    button.open {
+      margin-bottom: 20px;
+      max-width: 180px;
+      width: 100%;
+    }
+  }
+  .filters-container {
+    margin-bottom: 5px;
+  }
+  .search-input-container {
+    display: flex;
+    .input-group {
+      margin-right: 5px;
+    }
+  }
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    h1 {
+      margin: 0 0 20px 0;
+    }
+    .input-group {
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+  }
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--righteous-font);
+  }
+  .lead {
+    font-size: 1.5rem;
+    font-family: var(--righteous-font);
+  }
+  ul {
+    width: 100%;
+    max-width: 600px;
+    padding: 0;
+    margin-top: 2rem;
+    list-style: none;
+  }
+  li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+    &.alert-success {
+      background-color: rgba(40, 255, 4, 0.42);
+      .task-title {
+        text-decoration: line-through;
+        color: #fff;
+      }
+      .remove-btn {
+        color: #fff;
+      }
+    }
+    &.alert-secondary {
+      background-color: rgba(255, 255, 255, 0.54);
+    }
+    .task-title {
+      margin: 0;
+    }
+    .buttons-container {
+      display: flex;
+      .remove-btn {
+        cursor: pointer;
+        margin-right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 16px;
+        outline: none;
+      }
+      .checkbox {
+        cursor: pointer;
+      }
+    }
+  }
+  .checkboxes {
+    float: right;
+    line-height: 15px;
+    width: 17px;
+    height: 17px;
+    background-color: #e9ecef;
+    border: 1px solid #e9ecef;
+    border-radius: 3px;
+  }
 
-h1 {
-  margin-top: 12rem;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-  font-family: var(--righteous-font);
-}
+  .search-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 
-.lead {
-  font-size: 1.5rem;
-  font-family: var(--righteous-font);
-}
-ul {
-  /*border-top: 2px solid white;*/
-  margin-top: 2rem;
-  list-style: none;
-  /*display: none;*/
-}
-li {
-  border-bottom: 1px solid white;
-  padding: 0.5rem 0 0.5rem 0;
-  margin: 0 1rem 0 1rem;
-}
-.checkboxes {
-  float: right;
-  line-height: 15px;
-  width: 17px;
-  height: 17px;
-  background-color: #e9ecef;
-  border: 1px solid #e9ecef;
-  border-radius: 3px;
-}
-
-.search-form {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.bg-dark {
-  background-color: #343a4069;
+  .bg-dark {
+    background-color: #343a4069;
+  }
 }
 
 .navbar {
@@ -92,5 +161,52 @@ li {
       margin: 0 10px 0 0;
       font-size: 14px;
     }
+  }
+}
+
+.modal {
+  justify-content: center;
+  align-items: center;
+  transition: background 0.1s ease;
+  &.active {
+    display: flex;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .modal-dialog {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 50px 25px;
+    .close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 25px;
+      outline: none;
+    }
+    button.save {
+      margin-top: 20px;
+    }
+  }
+  form.new_task {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    .input-group, .form-group, .field_with_errors, input {
+      width: 100%;
+    }
+    button {
+      width: 100px;
+    }
+  }
+  .error {
+    color: red;
   }
 }

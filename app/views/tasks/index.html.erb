@@ -1,27 +1,24 @@
 <h1 class="display-2 text-center">TodoList</h1>
 <p class="lead text-center">Welcome to my todoList applications</p>
+<button id="open-btn" type="button" class="btn btn-primary open" onclick="openPopup()">
+  ADD TASK
+</button>
 <%= form_tag tasks_path, method: :get, class: 'search-form', remote: true do |f| %>
-  <div class="input-group">
-    <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'form-control search' %>
-<!--    <span>-->
-       <%#= f.button :OK, id: 'btn', type: 'button', class: 'btn btn-primary' %>
-<!--      <button id="btn" type="button" class="btn btn-primary">search</button>-->
-<!--    </span>-->
+  <div class="filters-container">
+    <%= select_tag :status, options_for_select(['all', 'todo', 'done'], params[:status] || 'all')%>
+    Expired <%= check_box_tag :expired, params[:expired] %>
+    Not expired <%= check_box_tag :not_expired, params[:not_expired] %>
+  </div>
+  <div class="search-input-container">
+    <div class="input-group">
+      <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'form-control search' %>
+    </div>
+    <%= submit_tag 'Search', class: 'btn' %>
   </div>
 <% end %>
-<div class="row">
-  <ul id="list" class="list col-lg-6 col-8 mx-auto">
+<div class="row list-container">
+  <ul onclick="handleCheckbox(event)" id="list" class="list">
     <%= render partial: 'task', collection: @tasks %>
   </ul>
+  <%= will_paginate @tasks %>
 </div>
-<!--<section class="creat-task-section">-->
-<!--  <h1>New Task</h1>-->
-
-<%#= render 'form' %>
-<!--</section>-->
-
-<!--<section class="tasks-container">-->
-<!--  <h2>Tasks</h2>-->
-
-
-

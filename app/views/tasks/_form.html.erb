@@ -1,14 +1,14 @@
 <%= form_for @task, remote: true, class: 'col-lg-6 col-8 mx-auto' do |f| %>
   <div class="input-group">
     <%= f.text_field :title, value: @task.title, class: 'form-control', placeholder: 'Title' %>
-    <%= @task.errors[:title].first %>
+    <p class="error"><%= @task.errors[:title].first %></p>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Description</label>
     <%= f.text_area :description, value: @task.description, id: 'exampleFormControlTextarea1', class: 'form-control', rows: 3 %>
-    <%= @task.errors[:description].first %>
+    <p class="error"><%= @task.errors[:description].first %></p>
   </div>
   <%= f.date_field :expire_at, value: @task.expire_at %>
-  <%= @task.errors[:expire_at].first %>
-  <%= f.button :OK %>
+  <p class="error"><%= @task.errors[:expire_at].first %></p>
+  <%= f.button :OK, class: 'save btn btn-primary' %>
 <% end %>
