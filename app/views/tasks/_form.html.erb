@@ -13,7 +13,7 @@
   </div>
   <%= f.date_field :expire_at, value: @task.expire_at %>
     <%= @task.errors[:expire_at].first %>
-  <%= f.button :OK %>
+  <%= f.button :OK, class: 'btn btn-outline-primary' %>
 <% end %>
 
 <% if notice %>

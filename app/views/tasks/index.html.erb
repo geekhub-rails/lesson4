@@ -1,5 +1,19 @@
+<nav class="navbar navbar-expand-sm bg-dark justify-content-end">
+  <form class="form-inline">
+    <%= form_tag tasks_path, method: :get, remote: true do |f| %>
+      <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'form-control mr-sm-2' %>
+    <% end %>
+  </form>
+  <ul class="nav">
+    <li class="nav-item">
+      <%= link_to "Log out", logout_path, method: "delete", class: 'btn btn-outline-danger' %>
+    </li>
+  </ul>
+
+</nav>
+
 <section class="creat-task-section">
-  <%= link_to "Log out", logout_path, method: "delete" %>
+
   <h1>New Task</h1>
 
   <%= render 'form' %>
@@ -8,12 +22,9 @@
 <section class="tasks-container">
   <h2>Tasks</h2>
 
-  <%= form_tag tasks_path, method: :get, remote: true do |f| %>
-    <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'search' %>
-  <% end %>
-
-
   <ul class="tasks-list">
     <%= render partial: 'task', collection: @tasks %>
   </ul>
+  <%= will_paginate @tasks %>
+	<%-# js_will_paginate -%>
 </section>
