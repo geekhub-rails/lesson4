@@ -12,6 +12,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(session[:user_id])
+    session[:user_id] = nil
+    redirect_to :root
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :password)

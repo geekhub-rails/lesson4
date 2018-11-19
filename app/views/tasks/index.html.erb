@@ -1,20 +1,28 @@
-<section class="creat-task-section">
-  <h1>New Task</h1>
+<nav class="navbar navbar-expand-sm bg-dark justify-content-end">
 
+  <form class="form-inline">
+    <%= form_tag tasks_path, method: :get, remote: true do |f| %>
+      <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'form-control mr-sm-2' %>
+    <% end %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Create new task
+      </button>
+        <%= link_to "Log out", logout_path, method: "delete", class: 'btn btn-outline-danger' %>
+  </form>
+
+
+</nav>
+
+<section class="creat-task-section">
   <%= render 'form' %>
 </section>
 
 <section class="tasks-container">
   <h2>Tasks</h2>
 
-  <%= form_tag tasks_path, method: :get, remote: true do |f| %>
-    <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'search' %>
-  <% end %>
-
-
   <ul class="tasks-list">
     <%= render partial: 'task', collection: @tasks %>
   </ul>
+  <%= will_paginate @tasks %>
+	<%-# js_will_paginate -%>
 </section>
-
-
