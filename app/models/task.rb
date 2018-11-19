@@ -8,4 +8,5 @@ class Task < ApplicationRecord
   enum status: %i(todo done)
 
   scope :q, ->(q) { where("title LIKE '%#{q}%'") if q }
+  scope :status, -> (status) { where status: status if status && status != 'all' }
 end
