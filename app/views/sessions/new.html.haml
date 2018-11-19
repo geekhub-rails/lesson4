@@ -1,6 +1,0 @@
-- if current_user.nil?
-	%h1 Login / Sign Up
-	= render 'form'
-- else
-	= render plain: 'Only guests can see new sessions page'
-	= link_to 'Back to homepage', controller: 'tasks', action: 'index'

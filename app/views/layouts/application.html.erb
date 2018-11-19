@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Lesson4</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Lesson4</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+</head>
 
-  </head>
-  <%= render partial: 'sessions/logout_link' %>
-  <body>
-  <div id="container">
+<body>
+<% if @current_user %>
+  <%= render 'layouts/header' %>
+<% end %>
+<div class="hero">
+  <div class="container">
     <%= yield %>
   </div>
-
-  </body>
+</div>
+<%= render 'tasks/popup' %>
+</body>
 </html>

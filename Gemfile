@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
-gem 'responders'
+
+gem 'will_paginate'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.3'
 gem 'bootstrap-modal-rails'

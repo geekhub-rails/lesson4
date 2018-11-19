@@ -3,12 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks = current_user.tasks
-                                .q(params[:q])
-                                .s(params[:s])
-                                .d(params[:d])
-                                .f(params[:f])
-                                .paginate(:page => params[:page], :per_page => 10)
+    @tasks = Task.for_dashboard(params).where(user_id: params[:user_id] || current_user)
   end
 
   def create
@@ -28,17 +23,17 @@ class TasksController < ApplicationController
     redirect_to :root
 end
 
-private
+  private
 
-def task
-  @task ||= current_user.tasks.find(params[:id])
-end
+  def task
+    @task ||= current_user.tasks.find(params[:id])
+  end
 
-def update_task_params
-  params.require(:task).permit(:status)
-end
+  def update_task_params
+    params.require(:task).permit(:status)
+  end
 
-def task_params
-  params.require(:task).permit(:title, :description, :expire_at, :status)
-end
+  def task_params
+    params.require(:task).permit(:title, :description, :expire_at, :status)
+  end
 end
