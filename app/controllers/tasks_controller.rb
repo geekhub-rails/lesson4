@@ -3,10 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks = current_user.tasks
-               .q(params[:q])
-               .status(params[:status])
-               .paginate(page: params[:page], per_page: 5)
+    @tasks = Task.for_dashboard(params).where(user_id: params[:user_id] || current_user)
   end
 
   def create

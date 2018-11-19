@@ -1,4 +1,4 @@
-<li class="task-item alert <%= task.status == 'done' ? 'alert-success' : 'alert-secondary'%>" role="alert">
+<li class="task-item alert <%= task_class(task.status)%>" role="alert">
   <p class="task-title" title="<%= task.description %>"><%= task.title %></p>
   <div class="buttons-container">
     <%= button_tag 'X', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :delete, class: 'remove-btn'%>
