@@ -1,9 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">ToDO List</a>
-    <div class="navbar-nav mr-auto">
-        <a class="nav-link" href="/">Home</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="https://s.dou.ua/img/announces/RC-logo.png" width="150" height="30" alt="">
+    </a>
+    <div class="user-data-container">
+      <p class="name"><%= @current_user.name if @current_user %></p>
+      <%= button_to('Logout', 'session', method: "delete", remote: true, class: 'btn btn-outline-light',
+                    data: {confirm: 'Are you sure?', disable_with: 'loading...'}) %>
     </div>
-    <div class="navbar-nav">
-        <%= link_to_if(@current_user, "Logout", session_path, remote: true, method: :delete, class: 'nav-link') {} %>
-    </div>
+  </div>
 </nav>

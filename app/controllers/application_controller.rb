@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path unless current_user
   end
 
-  def require_guess
+  def require_guest
     redirect_to tasks_path if current_user
   end
 

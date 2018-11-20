@@ -1,9 +1,9 @@
-<li class="task-item alert <%= task.status.to_i.zero? ? 'alert-secondary' : 'alert-success'%>" role="alert">
+<li class="task-item alert <%= task_class(task.status)%>" role="alert">
   <p class="task-title" title="<%= task.description %>"><%= task.title %></p>
   <div class="buttons-container">
-    <%= button_tag 'X', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :delete, class: "btn #{task.status.to_i.zero? ? 'btn-dark' : 'btn-success'}"%>
+    <%= button_tag 'X', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :delete, class: 'remove-btn'%>
     <%= form_for task, remote: true do |f| %>
-      <%= f.check_box :status, checked: task.done?, onchange: "this.setAttribute('data-params', 'task[status]=' + (this.checked ? 'done' : 'todo'))", data: {url: task_path(task), remote: true, method: :patch} %>
+      <%= f.check_box :status, checked: task.done?, class: 'checkbox', onchange: "this.setAttribute('data-params', 'task[status]=' + (this.checked ? 'done' : 'todo'))", data: {url: task_path(task), remote: true, method: :patch} %>
     <% end %>
   </div>
 </li>

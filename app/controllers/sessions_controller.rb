@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :require_guess, except: :destroy
-
+  before_action :require_guest, only: [:new, :create]
   def new
     @user = User.new
   end
@@ -10,7 +9,7 @@ class SessionsController < ApplicationController
     @user ||= User.create(user_params)
     if @user.valid? && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to tasks_path
     end
   end
 
@@ -20,7 +19,6 @@ class SessionsController < ApplicationController
   end
 
   private
-
   def user_params
     params.require(:user).permit(:name, :password)
   end
