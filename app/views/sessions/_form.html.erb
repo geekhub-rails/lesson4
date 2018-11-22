@@ -8,6 +8,9 @@
       <%= f.password_field :password, placeholder: 'Username', class: 'form-control' %>
       <%= @user.errors[:password].first %>
     </div>
+    <div class="input-group">
+        <%= f.email_field :email, placeholder: 'Enter email(optional)', class: 'form-control' %>
+    </div>
     <div><%= f.submit 'Sign Up', class: 'btn btn-primary' %></div>
   <% end %>
 </div>
