@@ -17,17 +17,6 @@
 //= require jquery3
 //= require bootstrap
 
-function openPopup () {
-    $('.modal').show(500, function () {
-        $(this).addClass('active')
-    })
-}
-
-function closePopup () {
-    $('.modal').removeClass('active')
-    $('.modal').hide(500)
-}
-
 function handleCheckbox (event) {
     if (event.target.id === 'task_status') {
         var item = event.target.parentNode.parentNode.parentNode

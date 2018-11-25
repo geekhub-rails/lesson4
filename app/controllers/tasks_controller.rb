@@ -6,6 +6,10 @@ class TasksController < ApplicationController
     @tasks = Task.for_dashboard(params, current_user)
   end
 
+  def new
+    @task = Task.new
+  end
+
   def create
     @task = current_user.tasks.create(task_params)
     return if @task.invalid?

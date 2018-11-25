@@ -12,16 +12,13 @@
 </head>
 
 <body>
-<% if @current_user %>
-  <%= render 'layouts/header' %>
-<% end %>
+<%= render 'layouts/header' %>
 <%= flash_messages %>
 <div class="hero">
   <div class="container">
     <%= yield %>
   </div>
 </div>
-<%= render 'tasks/popup' %>
 <div id="modal-window" class="modal hide fade" role="dialog" aria-hidden="true"></div>
 </body>
 </html>
