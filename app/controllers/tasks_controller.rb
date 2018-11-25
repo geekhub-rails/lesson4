@@ -3,7 +3,12 @@ class TasksController < ApplicationController
 
   def index
     @task = Task.new
-    @tasks = Task.for_dashboard(params).where(user_id: params[:user_id] || current_user)
+    @user = User.find_by(id: params[:user_id])
+    if @user && JSON.parse(@user.shared).kind_of?(Array) && JSON.parse(@user.shared).include?(current_user.id)
+      @tasks = Task.for_dashboard(params).where(user_id: @user.id)
+    else
+      @tasks = Task.for_dashboard(params).where(user_id: current_user)
+    end
   end
 
   def create
@@ -16,6 +21,18 @@ class TasksController < ApplicationController
   def update
     task.update(update_task_params)
     head 200
+  end
+
+  def share
+    @user = User.find_by(name: share_users_tasks_params[:name])
+    if current_user.shared && JSON.parse(current_user.shared).kind_of?(Array)
+      shared = JSON.parse(current_user.shared)
+      shared.push(@user.id)
+      current_user.shared = shared
+    else
+      current_user.shared = [@user.id]
+    end
+    current_user.save
   end
 
   def destroy
@@ -35,5 +52,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :description, :expire_at, :status)
+  end
+
+  def share_users_tasks_params
+    params.permit(:name)
   end
 end

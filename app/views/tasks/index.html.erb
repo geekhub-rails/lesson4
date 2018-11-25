@@ -3,10 +3,18 @@
 <button id="open-btn" type="button" class="btn btn-primary open" onclick="openPopup()">
   ADD TASK
 </button>
+<%= form_tag '/tasks/share', controller: @user, method: :post, class: 'share-form', remote: true do |f| %>
+  <div class="share-input-container">
+    <%= text_field_tag :name, params[:name], placeholder: 'Name', class: 'form-control share' %>
+    <%= submit_tag 'Share', class: 'btn' %>
+  </div>
+<% end %>
 <%= form_tag tasks_path, method: :get, class: 'search-form', remote: true do |f| %>
   <div class="filters-container">
-    <%= select_tag :status, options_for_select(Task.statuses.keys, params[:status]), prompt: 'All' %>
-    <%= select_tag :expired, options_for_select(['Expired', 'Feature'], params[:status]), prompt: 'All' %>
+    <div>
+      <%= select_tag :status, options_for_select(Task.statuses.keys, params[:status]), prompt: 'All' %>
+      <%= select_tag :expired, options_for_select(['Expired', 'Feature'], params[:status]), prompt: 'All' %>
+    </div>
   </div>
   <div class="search-input-container">
     <div class="input-group">
