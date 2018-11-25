@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(name: user_params[:name])
     @user ||= User.create(user_params)
-    puts ENV
     if @user.valid? && @user.authenticate(user_params[:password])
       UserMailer.welcome_email(@user).deliver_now
       session[:user_id] = @user.id

@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   def index
     @task = Task.new
     @user = User.find_by(id: params[:user_id])
-    if @user && JSON.parse(@user.shared).kind_of?(Array) && JSON.parse(@user.shared).include?(current_user.id)
+    shared = @user && JSON.parse(@user.shared)
+    if shared.kind_of?(Array) && shared.include?(current_user.id)
       @tasks = Task.for_dashboard(params).where(user_id: @user.id)
     else
       @tasks = Task.for_dashboard(params).where(user_id: current_user)
@@ -25,8 +26,8 @@ class TasksController < ApplicationController
 
   def share
     @user = User.find_by(name: share_users_tasks_params[:name])
-    if current_user.shared && JSON.parse(current_user.shared).kind_of?(Array)
-      shared = JSON.parse(current_user.shared)
+    shared = current_user.shared && JSON.parse(current_user.shared)
+    if shared.kind_of?(Array)
       shared.push(@user.id)
       current_user.shared = shared
     else
