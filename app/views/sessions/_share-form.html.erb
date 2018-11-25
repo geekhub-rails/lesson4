@@ -1,0 +1,22 @@
+<div class="modal-dialog">
+    <%= form_for @user, :url => sessions_share_path, remote: true do |f| %>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Share your tasks</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <%= flash_messages %>
+                <div class="form-group">
+                    <%= label 'user', 'Name' %>
+                    <%= f.text_field :name, value: '', class: 'form-control', 'aria-label' => 'Small' %>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <%= f.button :OK, class: 'btn btn-primary' %>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    <% end %>
+</div>

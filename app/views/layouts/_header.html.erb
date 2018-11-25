@@ -3,6 +3,9 @@
     <a class="navbar-brand" href="#">
       <img src="https://s.dou.ua/img/announces/RC-logo.png" width="150" height="30" alt="">
     </a>
+      <div class="navbar-nav mr-auto">
+          <%= link_to_if(@current_user, 'Share', sessions_share_path, {:remote => true, 'data-toggle' =>  "modal", class: 'nav-link', 'data-target' => '#window-modal'}){}  %>
+      </div>
     <div class="user-data-container">
       <p class="name"><%= @current_user.name if @current_user %></p>
       <%= button_to('Logout', 'session', method: "delete", remote: true, class: 'btn btn-outline-light',
