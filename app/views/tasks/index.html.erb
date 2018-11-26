@@ -20,8 +20,17 @@
     </div>
 <% end %>
 <div class="row list-container">
-  <ul onclick="handleCheckbox(event)" id="list" class="list">
-    <%= render partial: 'task', collection: @tasks %>
-  </ul>
-  <%= will_paginate @tasks %>
+    <%= grid(@tasks_grid) do |g|
+      g.column name:  'Title', attribute: 'title', filter: false
+      g.column(name:  'Description') do |task|
+        task.description
+      end
+      g.column(name: 'status') do |task|
+        check_box_tag :status, checked: task.done?, class: 'checkbox', onchange: "this.setAttribute('data-params', 'task[status]=' + (this.checked ? 'done' : 'todo'))", data: {url: task_path(task), remote: true, method: :patch}
+      end
+      g.column name: 'Expire At', attribute: 'expire_at'
+      g.column do |task|
+        button_tag 'X', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :delete, class: 'remove-btn'
+      end
+    end -%>
 </div>

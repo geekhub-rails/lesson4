@@ -16,6 +16,10 @@
 //= require_tree .
 //= require jquery3
 //= require bootstrap
+//= require jquery_ujs
+//= require jquery-ui
+//= require wice_grid
+//= require bootstrap-datepicker
 
 function handleCheckbox (event) {
     if (event.target.id === 'task_status') {

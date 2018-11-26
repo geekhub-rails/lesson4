@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   def index
     @task = Task.new
     @tasks = Task.for_dashboard(params, current_user)
+    @tasks_grid = initialize_grid(@tasks)
   end
 
   def new
