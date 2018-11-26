@@ -9,18 +9,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <!-- google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 </head>
 
 <body>
-<% if @current_user %>
-  <%= render 'layouts/header' %>
-<% end %>
+<%= render 'layouts/header' %>
+<%= flash_messages %>
 <div class="hero">
   <div class="container">
     <%= yield %>
   </div>
 </div>
-<%= render 'tasks/popup' %>
+<div id="modal-window" class="modal hide fade" role="dialog" aria-hidden="true"></div>
 </body>
 </html>

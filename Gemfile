@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'will_paginate'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -63,3 +62,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'wice_grid', git: 'https://github.com/patricklindsay/wice_grid.git'
+gem "figaro"
+gem 'bootstrap-datepicker-rails'
+gem 'jquery-ui-rails'
+

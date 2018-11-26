@@ -1,23 +1,36 @@
 <h1 class="display-2 text-center">TodoList</h1>
 <p class="lead text-center">Welcome to my todoList applications</p>
-<button id="open-btn" type="button" class="btn btn-primary open" onclick="openPopup()">
-  ADD TASK
-</button>
+
 <%= form_tag tasks_path, method: :get, class: 'search-form', remote: true do |f| %>
-  <div class="filters-container">
-    <%= select_tag :status, options_for_select(Task.statuses.keys, params[:status]), prompt: 'All' %>
-    <%= select_tag :expired, options_for_select(['Expired', 'Feature'], params[:status]), prompt: 'All' %>
-  </div>
-  <div class="search-input-container">
-    <div class="input-group">
-      <%= text_field_tag :q, params[:q], placeholder: t('.search'), class: 'form-control search' %>
+    <div class="form-row">
+        <div class="col-6">
+            <%= text_field_tag :q, params[:q], placeholder: t('.search'), class: 'form-control search' %>
+        </div>
+        <div class="col">
+            <%= select_tag :status, options_for_select(Task.statuses.keys, params[:status]), class: 'form-control', prompt: 'All' %>
+        </div>
+        <div class="col">
+            <%= select_tag :expired, options_for_select(['Expired', 'Feature'], params[:status]), class: 'form-control', prompt: 'All' %>
+        </div>
+        <div class="col">
+            <%= submit_tag 'Search', class: 'btn btn-primary' %>
+        </div>
+
+
     </div>
-    <%= submit_tag 'Search', class: 'btn' %>
-  </div>
 <% end %>
 <div class="row list-container">
-  <ul onclick="handleCheckbox(event)" id="list" class="list">
-    <%= render partial: 'task', collection: @tasks %>
-  </ul>
-  <%= will_paginate @tasks %>
+    <%= grid(@tasks_grid) do |g|
+      g.column name:  'Title', attribute: 'title', filter: false
+      g.column(name:  'Description') do |task|
+        task.description
+      end
+      g.column(name: 'status') do |task|
+        check_box_tag :status, checked: task.done?, class: 'checkbox', onchange: "this.setAttribute('data-params', 'task[status]=' + (this.checked ? 'done' : 'todo'))", data: {url: task_path(task), remote: true, method: :patch}
+      end
+      g.column name: 'Expire At', attribute: 'expire_at'
+      g.column do |task|
+        button_tag 'X', 'data-url' => task_path(task), 'data-remote' => true, 'data-method' => :delete, class: 'remove-btn'
+      end
+    end -%>
 </div>

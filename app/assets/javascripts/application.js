@@ -10,22 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-function openPopup () {
-    $('.modal').show(500, function () {
-        $(this).addClass('active')
-    })
-}
-
-function closePopup () {
-    $('.modal').removeClass('active')
-    $('.modal').hide(500)
-}
+//= require jquery3
+//= require bootstrap
+//= require jquery_ujs
+//= require jquery-ui
+//= require wice_grid
+//= require bootstrap-datepicker
 
 function handleCheckbox (event) {
     if (event.target.id === 'task_status') {
