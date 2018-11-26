@@ -66,8 +66,17 @@ body {
       margin: 0 0 20px 0;
     }
     .input-group {
+      width: 100%;
       max-width: 500px;
       margin: 0 auto 20px;
+      .field_with_errors, .input-container {
+        width: 100%;
+      }
+      .error-message {
+        margin: 0;
+        font-size: 18px;
+        color: red;
+      }
     }
   }
   .list-container {
@@ -141,6 +150,21 @@ body {
   .search-form {
     max-width: 500px;
     margin: 0 auto;
+  }
+
+  .share-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    .share-input-container {
+      display: flex;
+      p {
+        margin: 0;
+      }
+      .share {
+        margin-right: 10px;
+      }
+    }
   }
 
   .bg-dark {

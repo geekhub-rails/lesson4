@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: user_params[:name])
     @user ||= User.create(user_params)
     if @user.valid? && @user.authenticate(user_params[:password])
+      UserMailer.welcome_email(@user).deliver_now
       session[:user_id] = @user.id
       redirect_to tasks_path
     end
@@ -20,6 +21,6 @@ class SessionsController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :password)
+    params.require(:user).permit(:name, :password, :email)
   end
 end

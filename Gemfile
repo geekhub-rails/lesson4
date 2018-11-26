@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'mailgun-ruby', require: 'mailgun'
 gem 'will_paginate'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1.3'
